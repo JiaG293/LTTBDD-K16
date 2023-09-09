@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-///Coding Challenge #4
-// 1. Calculate the tip, depending on the bill value. Create a variable called 'tip' for this. 
-//It's not allowed to use an if/else statement (If it's easier for you, you can start with an 
-//if/else statement, and then try to convert it to a ternary operator!)
+      ///Coding Challenge #4
+      // 1. Calculate the tip, depending on the bill value. Create a variable called 'tip' for this.
+      //It's not allowed to use an if/else statement (If it's easier for you, you can start with an
+      //if/else statement, and then try to convert it to a ternary operator!)
+      var arrBillVal = [275, 40, 430];
 
-// 2. Print a string to the console containing the bill value, the tip, and the final value (bill + tip).
-//Example: “The bill was 275, the tip was 41.25, and the total value 316.25”
+      var calcTip = (billValue) => {
+        let tip = 0;
+        billValue < 50 && billValue > 300
+          ? (tip = 20 / 100 * billValue)
+          : (tip = 15 / 100 * billValue);
+        return {
+            tip: tip,
+            billValue: billValue,
+            totalBill: tip + billValue
+        };
+      }
+      console.log( 'Calculate tip:', calcTip(arrBillVal[0]).tip);
 
+      
+      // 2. Print a string to the console containing the bill value, the tip, and the final value (bill + tip).
+      //Example: “The bill was 275, the tip was 41.25, and the total value 316.25”
+
+      function showDetailBill(){
+        let objTemp = calcTip(arrBillVal[0])
+        return `The bill was ${objTemp.billValue}\$, the tip was ${objTemp.tip}\$, and the total value ${objTemp.totalBill}\$`
+      }
+      console.log(showDetailBill())
     </script>
-</body>
+  </body>
 </html>
