@@ -7,11 +7,20 @@
   </head>
   <body>
     <script>
+      //test data
+      var arrTemperatures = [17, 21, 23];
+      var arrTemperatures1 = [12, 5, -5, 0, 4];
     //   1. Create a function 'printForecast' which takes in an array 'arr' and logs a
     //   string like the above to the console. Try it with both test datasets.
-
     //   2. Use the problem-solving framework: Understand the problem and break it up
     //   into sub-problems!
+    console.log("1.2.")
+      function printForecast(arr){
+        arr.map((elem, index) => {
+          console.log(`${elem}℃ in days ${index}\n`);
+        })
+      }
+      printForecast(arrTemperatures)
     
     </script>
   </body>
