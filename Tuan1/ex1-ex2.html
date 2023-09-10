@@ -1,144 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coding Challenge #1 #2</title>
-</head>
+  </head>
 
-<body>
-
-
+  <body>
     <script>
+      ///Coding Challenge #1
+      var markSample = {
+        name: "Mark",
+        mass: 78,
+        height: 1.69
+      };
 
-///Coding Challenge #1
+      //1. Store Mark's and John's mass and height in variables
+      var mark = {
+        name: "Mark",
+        mass: 78,
+        height: 1.69,
+        getBMI: function () {
+          return this.mass / this.height ** 2;
+        },
+      };
+      var john = {
+        name: "John",
+        mass: 92,
+        height: 1.95,
+        getBMI: function () {
+          return this.mass / this.height ** 2;
+        },
+      };
 
-        //1. Store Mark's and John's mass and height in variables
-        var mark = {
-            name: "Mark",
-            mass: 78,
-            height: 1.69,
-            getBMI: function () {
-                return this.mass / this.height ** 2
-            }
+      var mark1 = {
+        name: "Mark1",
+        mass: 95,
+        height: 1.88,
+        getBMI: function () {
+          return this.mass / this.height ** 2;
+        },
+      };
+      var john1 = {
+        name: "John1",
+        mass: 85,
+        height: 1.76,
+        getBMI: function () {
+          return this.mass / this.height ** 2;
+        },
+      };
 
-        }
-        var john = {
-            name: "John",
-            mass: 92,
-            height: 1.95,
-            getBMI: function () {
-                return this.mass / this.height ** 2
-            }
-        }
-
-        var mark1 = {
-            name: "Mark1",
-            mass: 95,
-            height: 1.88,
-            getBMI: function () {
-                return this.mass / this.height ** 2
-            }
-
-        }
-        var john1 = {
-            name: "John1",
-            mass: 85,
-            height: 1.76,
-            getBMI: function () {
-                return this.mass / this.height ** 2
-            }
-        }
-
-
-
-
-
-        //2. Calculate both their BMIs using the formula (you can even implement both versions)
-        function converterObj(obj) {
-            return {
-                name: obj.name,
-                mass: obj.mass,
-                height: obj.height,
-                getBMI: function () {
-                    return obj.mass / Math.pow(obj.height, 2) // pow(<co so>, <so mu>) 
-                    //return mass / (height * height) 
-                }
-            }
-        }
-        console.log('BMI caculate: ', converterObj(mark).getBMI())
-
-
-
-
-
-
-
-        //3. Create a Boolean variable 'markHigherBMI' containing information 
-        //about whether Mark has a higher BMI than John.
-        function compareBMI(bmi1, bmi2) {
-            //flag
-            var markHigherBMI = false;
-
-
-            console.log(`${bmi1.name}: `, bmi1.getBMI())
-            console.log(`${bmi2.name}: `, bmi2.getBMI())
-
-            if (bmi1.getBMI() > bmi2.getBMI()) {
-                markHigherBMI = true
-            }
-            return markHigherBMI
-        }
-        console.log('BMI result comparison: ', compareBMI(mark, john));
-
-
-
-
-
-
-
-
-
-
-
-
-
-///Coding Challenge #2
-
-        // 1. Print a nice output to the console, saying who has the higher BMI. The message
-        // is either "Mark's BMI is higher than John's!" or "John's BMI is higher than Mark's!"
-        function cp1BMI(bmi1, bmi2) {
-            //toFixed(2): lam tron den so thap phan thu 2
-            //reverse() dao nguoc phan tu trong array
-            let temp = [`${bmi1.name}'s'`, 'BMI is higher than', `${bmi2.name}'s`];
-            let flag = false;
-            if (bmi1.getBMI() > bmi2.getBMI()) {
-                return console.log(temp.join(' ') + '!')
-            } else {
-                return console.log(temp.reverse().join(' ') + '!')
-            }
+      //2. Calculate both their BMIs using the formula (you can even implement both versions)
+      function converterObj(obj) {
+        return {
+          name: obj.name,
+          mass: obj.mass,
+          height: obj.height,
+          getBMI: function () {
+            return obj.mass / Math.pow(obj.height, 2); // pow(<co so>, <so mu>)
+            //return mass / (height * height)
+          },
         };
-        cp1BMI(mark, john);
+      }
+      console.log("BMI caculate: ", converterObj(markSample).getBMI());
 
+      //3. Create a Boolean variable 'markHigherBMI' containing information
+      //about whether Mark has a higher BMI than John.
+      function compareBMI(bmi1, bmi2) {
+        //flag
+        var markHigherBMI = false;
 
+        console.log(`${bmi1.name}: `, bmi1.getBMI());
+        console.log(`${bmi2.name}: `, bmi2.getBMI());
 
-        // 2. Use a template literal to include the BMI values in the outputs. Example: "Mark's
-        // BMI (28.3) is higher than John's (23.9)!"
-        function cp2BMI(bmi1, bmi2) {
-            //toFixed(2): lam tron den so thap phan thu 2
-            //reverse() dao nguoc phan tu trong array
-            let temp = [`${bmi1.name}'s' (${(bmi1.getBMI().toFixed(2))})`, 'BMI is higher than', `${bmi2.name}'s' (${(bmi2.getBMI().toFixed(2))})`];
-            let flag = false;
-            if (bmi1.getBMI() > bmi2.getBMI()) {
-                return console.log(temp.join(' ') + '!')
-            } else {
-                return console.log(temp.reverse().join(' ') + '!')
-            }
-        };
-        cp2BMI(mark, john);
+        if (bmi1.getBMI() > bmi2.getBMI()) {
+          markHigherBMI = true;
+        }
+        return markHigherBMI;
+      }
+      console.log("BMI result comparison: ", compareBMI(mark, john));
 
+      ///Coding Challenge #2
+
+      // 1. Print a nice output to the console, saying who has the higher BMI. The message
+      // is either "Mark's BMI is higher than John's!" or "John's BMI is higher than Mark's!"
+      function cp1BMI(bmi1, bmi2) {
+        //toFixed(2): lam tron den so thap phan thu 2
+        //reverse() dao nguoc phan tu trong array
+        let temp = [`${bmi1.name}'s'`, "BMI is higher than", `${bmi2.name}'s`];
+        let flag = false;
+        if (bmi1.getBMI() > bmi2.getBMI()) {
+          return console.log(temp.join(" ") + "!");
+        } else {
+          return console.log(temp.reverse().join(" ") + "!");
+        }
+      }
+      cp1BMI(mark, john);
+
+      // 2. Use a template literal to include the BMI values in the outputs. Example: "Mark's
+      // BMI (28.3) is higher than John's (23.9)!"
+      function cp2BMI(bmi1, bmi2) {
+        //toFixed(2): lam tron den so thap phan thu 2
+        //reverse() dao nguoc phan tu trong array
+        let temp = [
+          `${bmi1.name}'s' (${bmi1.getBMI().toFixed(2)})`,
+          "BMI is higher than",
+          `${bmi2.name}'s' (${bmi2.getBMI().toFixed(2)})`,
+        ];
+        let flag = false;
+        if (bmi1.getBMI() > bmi2.getBMI()) {
+          return console.log(temp.join(" ") + "!");
+        } else {
+          return console.log(temp.reverse().join(" ") + "!");
+        }
+      }
+      cp2BMI(mark, john);
     </script>
-</body>
-
+  </body>
 </html>

@@ -9,14 +9,66 @@
     <script>
       // 1. For each of them, create an object with properties for their full name, mass, and
       //  height (Mark Miller and John Smith)
-
       // 2. Create a 'calcBMI' method on each object to calculate the BMI (the same
       //  method on both objects). Store the BMI value to a property, and also return it from the method
+      var mark = {
+            fullName: "Mark Miller",
+            mass: 78,
+            height: 1.69,
+            calcBMI: function () {
+                return this.mass / this.height ** 2
+            }
+
+        }
+        var john = {
+            fullName: "John Smith",
+            mass: 92,
+            height: 1.95,
+            calcBMI: function () {
+                return this.mass / this.height ** 2
+            }
+        }
+
+        var mark1 = {
+            fullName: "Mark Miller 1",
+            mass: 95,
+            height: 1.88,
+            calcBMI: function () {
+                return this.mass / this.height ** 2
+            }
+
+        }
+        var john1 = {
+            fullName: "John Smith 1",
+            mass: 85,
+            height: 1.76,
+            calcBMI: function () {
+                return this.mass / this.height ** 2
+            }
+        }
+      
+
+        console.log('BMI caculate: ', john.calcBMI())
 
       // 3. Log to the console who has the higher BMI, together with the full name and the
       //  respective BMI. Example: "John's BMI (28.3) is higher than Mark's (23.9)!"
       //  Test data: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
-      
+      function compareBMI(bmi1, bmi2) {
+        //toFixed(2): lam tron den so thap phan thu 2
+        //reverse() dao nguoc phan tu trong array
+        let temp = [
+          `${bmi1.fullName}'s (${bmi1.calcBMI().toFixed(2)})`,
+          "BMI is higher than",
+          `${bmi2.fullName}'s (${bmi2.calcBMI().toFixed(2)})`,
+        ];
+        let flag = false;
+        if (bmi1.calcBMI() > bmi2.calcBMI()) {
+          return console.log(temp.join(" ") + "!");
+        } else {
+          return console.log(temp.reverse().join(" ") + "!");
+        }
+      }
+      compareBMI(mark, john);
     </script>
   </body>
 </html>

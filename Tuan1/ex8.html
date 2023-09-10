@@ -7,36 +7,55 @@
   </head>
   <body>
     <script>
-        // 1. Create an array 'bills' containing all 10 test bill values
+      // 1. Create an array 'bills' containing all 10 test bill values
+      var billValue = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 524];
+      // 2. Create empty arrays for the tips and the totals ('tips' and 'totals')
+      var tips = [];
+      var totals = [];
+      // 3. Use the 'calcTip' function we wrote before (no need to repeat) to calculate
+      // tips and total values (bill + tip) for every bill value in the bills array. Use a for
+      // loop to perform the 10 calculations!
 
-        // 2. Create empty arrays for the tips and the totals ('tips' and 'totals')
+      var calcTip = (billValue) => {
+        let tip = 0;
+        billValue < 50 && billValue > 300
+          ? (tip = (20 / 100) * billValue)
+          : (tip = (15 / 100) * billValue);
+        return tip;
+      };
+      console.log("1.\n Calculate tip:", calcTip(100));
 
-        // 3. Use the 'calcTip' function we wrote before (no need to repeat) to calculate
-        // tips and total values (bill + tip) for every bill value in the bills array. Use a for
-        // loop to perform the 10 calculations!
+      function calcTotal(billValue){
+        billValue.map(elem => {
+          tips.push(calcTip(elem));
+          totals.push(calcTip(elem) + elem);
+        })
+        return {
+          bill: billValue,
+          tips: tips,
+          totals: totals
+        }
+      }
 
-        // Test data: 22, 295, 176, 440, 37, 105, 10, 1100, 86 and 52
-        // Hints: Call ‘calcTip ‘in the loop and use the push method to add values to the
-        // tips and totals arrays
+      console.log("3.\n", calcTotal(billValue))
+      // Test data: 22, 295, 176, 440, 37, 105, 10, 1100, 86 and 52
+      // Hints: Call ‘calcTip ‘in the loop and use the push method to add values to the
+      // tips and totals arrays
 
-        
-        
-        // 4. Bonus: Write a function 'calcAverage' which takes an array called 'arr' as
-        // an argument. This function calculates the average of all numbers in the given
-        // array. This is a difficult challenge (we haven't done this before)! Here is how to
+      // 4. Bonus: Write a function 'calcAverage' which takes an array called 'arr' as
+      // an argument. This function calculates the average of all numbers in the given
+      // array. This is a difficult challenge (we haven't done this before)! Here is how to
 
-        
-        // 4.1. First, you will need to add up all values in the array. To do the addition,
-        // start by creating a variable 'sum' that starts at 0. Then loop over the
-        // array using a for loop. In each iteration, add the current value to the
-        // 'sum' variable. This way, by the end of the loop, you have all values
-        // added together
+      // 4.1. First, you will need to add up all values in the array. To do the addition,
+      // start by creating a variable 'sum' that starts at 0. Then loop over the
+      // array using a for loop. In each iteration, add the current value to the
+      // 'sum' variable. This way, by the end of the loop, you have all values
+      // added together
 
-        // 4.2. To calculate the average, divide the sum you calculated before by the
-        // length of the array (because that's the number of elements)
+      // 4.2. To calculate the average, divide the sum you calculated before by the
+      // length of the array (because that's the number of elements)
 
-        // 4.3. Call the function with the 'totals' array
-        
+      // 4.3. Call the function with the 'totals' array
     </script>
   </body>
 </html>

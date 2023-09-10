@@ -7,20 +7,79 @@
   </head>
   <body>
     <script>
-        
+      ///test data
+      var dolphins = [44, 23, 71];
+      var koalas = [65, 54, 49];
+
+      var dolphins1 = [85, 54, 41];
+      var koalas1 = [23, 34, 27];
+
       //   1. Create an arrow function 'calcAverage' to calculate the average of 3 scores
+      function calcAverage(scores) {
+        let avg = 0;
+        let times = scores.length;
+        scores.forEach((element) => (avg += element));
+        return avg / times;
+      }
+      console.log(
+        "1.\n dolphins avg scores:",
+        calcAverage(dolphins),
+        "\n",
+        "koalas avg scores:",
+        calcAverage(koalas)
+      );
 
       //   2. Use the function to calculate the average for both teams
+      function calcAvgBothTeams(team1, team2) {
+        return {
+          team1: calcAverage(team1),
+          team2: calcAverage(team2),
+        };
+      }
+      var scoreAvg = calcAvgBothTeams(dolphins1, koalas1);
+      console.log("2.\n Average scores two teams: \n", scoreAvg);
 
       //   3. Create a function 'checkWinner' that takes the average score of each team
-      //   as parameters ('avgDolhins' and 'avgKoalas'), and then logs the winner
+      //   as parameters ('avgDolphins' and 'avgKoalas'), and then logs the winner
       //   to the console, together with the victory points, according to the rule above.
       //   Example: "Koalas win (30 vs. 13)"
 
+      function checkWinner(avgDolphins, avgKoalas) {
+        if(avgDolphins > 0 && avgKoalas > 0) {
+          if (avgDolphins - avgKoalas >= avgKoalas) {
+            console.log(`Dolphins wins (${avgDolphins} vs ${avgKoalas})`);
+          } else if (avgKoalas - avgDolphins >= avgDolphins) {
+            console.log(`Koalas wins (${avgKoalas} vs ${avgDolphins})`);
+          } else {
+            console.log("No teams wins!");
+          }
+        } else {
+          console.log("invalid score")
+        }
+      }
+
+      console.log("3.")
+      checkWinner(30, 13);
+
       //   4. Use the 'checkWinner' function to determine the winner for both Data 1 and Data 2
+      console.log("4.")
+      checkWinner(calcAverage(dolphins), calcAverage(koalas));
+      checkWinner(calcAverage(dolphins1), calcAverage(koalas1));
 
       //   5. Ignore draws this time
-
+      function checkWinner(avgDolphins, avgKoalas) {
+        if(avgDolphins > 0 && avgKoalas > 0) {
+          if (avgDolphins - avgKoalas >= avgKoalas) {
+            console.log(`Dolphins wins (${avgDolphins} vs ${avgKoalas})`);
+          } else if (avgKoalas - avgDolphins >= avgDolphins) {
+            console.log(`Koalas wins (${avgKoalas} vs ${avgDolphins})`);
+          } else {
+            console.log("Again!!");
+          }
+        } else {
+          console.log("invalid score")
+        }
+      }
     </script>
   </body>
 </html>

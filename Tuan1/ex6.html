@@ -7,18 +7,53 @@
   </head>
   <body>
     <script>
+      //test data
+      var billValue = [125, 555, 44];
+
       //1. Write a function 'calcTip' that takes any bill value as an input and returns
       //    the corresponding tip, calculated based on the rules above (you can check out
       //    the code from first tip calculator challenge if you need to). Use the function
       //    type you like the most. Test the function using a bill value of 100
-      
+
+      var calcTip = (billValue) => {
+        let tip = 0;
+        billValue < 50 && billValue > 300
+          ? (tip = (20 / 100) * billValue)
+          : (tip = (15 / 100) * billValue);
+        return tip;
+      };
+      console.log("1.\n Calculate tip:", calcTip(100));
+
       //2. And now let's use arrays! So create an array 'bills' containing the test data below
-      
-      //3. Create an array 'tips' containing the tip value for each bill, calculated from 
+      //3. Create an array 'tips' containing the tip value for each bill, calculated from
       //    the function you created before
-      
+      function calcTipOtp(billValue) {
+        let tip = [];
+        if (typeof billValue == "number") {
+          tip = calcTip(billValue);
+        } else {
+          billValue.map((element) => {
+            tip.push(calcTip(element));
+          });
+        }
+        return tip;
+      }
+      console.log("2.3.\n", "Calculate tip option input values:", calcTipOtp(billValue));
+
       //4. Bonus: Create an array 'total' containing the total values, so the bill + tip
-    
+      function calcTotalBill(billValue) {
+        let total = [];
+        if (typeof billValue == "number") {
+          tip = calcTip(billValue);
+        } else {
+          billValue.map((element) => {
+            total.push(element + calcTip(element));
+          });
+        }
+
+        return total;
+      }
+      console.log("4.\n", "Calculate total bill:", calcTotalBill(billValue));
     </script>
   </body>
 </html>
