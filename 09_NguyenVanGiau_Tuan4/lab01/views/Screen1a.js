@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import 'boxicons';
 
+
 export default function Screen1a() {
     return (
         <View style={styles.container}>
