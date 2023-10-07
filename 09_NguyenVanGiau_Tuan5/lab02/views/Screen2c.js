@@ -11,7 +11,7 @@ import { useState } from "react";
 
 export default function Screen2a() {
   const [result, setResult] = useState();
-  const [lengthPassword, setLengthPassword] = useState();
+  const [lengthPassword, setLengthPassword] = useState(0);
   const [isSelected1, setSelection1] = useState(false);
   const [isSelected2, setSelection2] = useState(false);
   const [isSelected3, setSelection3] = useState(false);
@@ -22,50 +22,42 @@ export default function Screen2a() {
     const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const numbers = "0123456789";
     const specialSymbol = "!@#$%^&*()_+{}:\"<>?|[];',./`~";
-
-    let stringChar = "";
-    let pwd = "";
-
-    if (isSelected1) {
-      stringChar += randomChar(lowerCase);
-      pwd += randomChar(lowerCase);
+    
+    let strArr = '';
+    for(let i = 0; i < len; i++) {
+      if (isSelected1) {
+        strArr += randomChar(isSelected1, lowerCase);
+      }
+      if (isSelected2) {
+        strArr += randomChar(isSelected2, upperCase);
+      }
+      if (isSelected3) {
+        strArr += randomChar(isSelected3, numbers);
+      }
+      if (isSelected4) {
+        strArr += randomChar(isSelected4, specialSymbol);
+      }
     }
-    if (isSelected2) {
-      stringChar += randomChar(lowerCase);
-      pwd += randomChar(upperCase);
-    }
-    if (isSelected3) {
-      stringChar += randomChar(lowerCase);
-      pwd += randomChar(numbers);
-    }
-    if (isSelected4) {
-      stringChar += randomChar(lowerCase);
-      pwd += randomChar(specialSymbol);
-    }
-    for (let i = 0; i < len - pwd.length; ++i) {
-      pwd += randomChar(stringChar);
-    }
-    pwd = shuffleString(pwd);
-
-    setResult(pwd);
+    strArr = strArr.slice(0, len) // lay ra so ki tu can de thuc hien tron
+    console.log('mat khau chua duoc tron:', strArr);
+    let pwdShow = shuffleString(strArr) //tron chuoi
+    console.log('mat khau da duoc tron:', pwdShow)
+    setResult(pwdShow)
   };
 
-  // tao ngau nhien 1 ki tu
-  function randomChar(char) {
-    const randomIndex = Math.floor(Math.random() * (char.length + 1));
-    return char[randomIndex];
+  // tao ngau nhien 1 chuoi ki tu
+  function randomChar(selected, type) {
+    if (selected) {
+      let iRandom = Math.floor(Math.random() * type.length);
+      return type.charAt(iRandom);
+    }
   }
 
   //tron chuoi
-  function shuffleString(string) {
-    let shuffledString = "";
-    const stringArray = string.split("");
-
-    while (stringArray.length > 0) {
-      const randomIndex = Math.floor(Math.random() * stringArray.length);
-      shuffledString += stringArray.splice(randomIndex, 1)[0];
-      return shuffledString;
-    }
+  function shuffleString(str) {
+    let strArr = str.split("");
+    let shfArr = strArr.sort(() => Math.random() - 0.5);
+    return shfArr.join("");
   }
 
   return (
@@ -86,14 +78,12 @@ export default function Screen2a() {
         </View>
         <View style={styles.middle}>
           <TextInput
-            editable={false}
-            clearTextOnFocus={false}
-            selectTextOnFocus={false}
+            readOnly={true}
             style={styles.textShow}
             value={result}
             onChangeValue={(e) => {
-                setResult(e)
-                console.log(result)
+              setResult(e);
+              console.log(result);
             }}
             placeholder="Show password generator"
           />
@@ -104,10 +94,9 @@ export default function Screen2a() {
             <TextInput
               style={styles.textInput}
               value={lengthPassword}
-              keyboardType = 'numeric'
+              inputMode="numeric"
               onChangeText={(e) => {
-                setLengthPassword(e)
-                console.log(lengthPassword)
+                setLengthPassword(e);
               }}
             />
           </View>
@@ -124,32 +113,32 @@ export default function Screen2a() {
                 style={styles.checkbox}
                 value={isSelected1}
                 onValueChange={(e) => {
-                  setSelection1(e)
-                  console.log("1");
+                  setSelection1(e);
+                  console.log("1 selected");
                 }}
               />
               <CheckBox
                 style={styles.checkbox}
                 value={isSelected2}
                 onValueChange={(e) => {
-                    setSelection2(e)
-                    console.log("2")
+                  setSelection2(e);
+                  console.log("2 selected");
                 }}
               />
               <CheckBox
                 style={styles.checkbox}
                 value={isSelected3}
                 onValueChange={(e) => {
-                    setSelection3(e)
-                    console.log("3")
+                  setSelection3(e);
+                  console.log("3 selected");
                 }}
               />
               <CheckBox
                 style={styles.checkbox}
                 value={isSelected4}
                 onValueChange={(e) => {
-                    setSelection4(e)
-                    console.log("4")
+                  setSelection4(e);
+                  console.log("4 selected");
                 }}
               />
             </View>
@@ -208,12 +197,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   middle1: {
-    flex: 0.4,
+    flex: 0.5,
     alignItems: "center",
     justifyContent: "space-evenly",
   },
   bottom: {
-    flex: 0.2,
+    flex: 0.1,
     flexDirection: "row",
     justifyContent: "center",
   },
