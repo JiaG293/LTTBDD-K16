@@ -38,12 +38,23 @@ export default function Screen01({ navigation, route }) {
             <View style={styles.middle}>
                 <Text variant="titleLarge">Điện Thoại Vsmart Joy 3 - Hàng chính hãng</Text>
                 <View style={styles.middleGroup1}>
-                    <Text variant="titleLarge" style={{ fontWeight: 'bold' }}>1.790.000 đ</Text>
-                    <Text variant="titleMedium" style={{ marginLeft: 20, textDecorationLine: 'line-through', color: '#484a49', fontWeight: 'bold' }}>1.790.000 đ</Text>
+                    <Text variant="titleLarge"
+                        style={{ fontWeight: 'bold' }}>1.790.000 đ</Text>
+                    <Text variant="titleMedium"
+                        style={{ marginLeft: 20, textDecorationLine: 'line-through', color: '#484a49', fontWeight: 'bold' }}>
+                        1.790.000 đ
+                    </Text>
                 </View>
                 <View style={styles.middleGroup2}>
-                    <Text variant='bodyMedium' style={{ fontWeight: 'bold', color: 'red', }}>Ở đâu rẻ hơn hoàn tiền</Text>
-                    <Icon name="questioncircleo" size={20} style={{ marginLeft: 10 }} color='#00000' />
+                    <Text variant='bodyMedium'
+                        style={{ fontWeight: 'bold', color: 'red', }}>
+                        Ở đâu rẻ hơn hoàn tiền
+                    </Text>
+                    <Icon
+                        name="questioncircleo"
+                        size={20}
+                        style={{ marginLeft: 10 }}
+                        color='#00000' />
                 </View>
                 <View style={styles.middleGroup3}>
                     <Rating
@@ -65,7 +76,7 @@ export default function Screen01({ navigation, route }) {
                 <Button
                     mode='contained'
                     buttonColor='red'
-                    onPress={() => console.log('Mua thành công!!!')}>
+                    onPress={() => console.log('Đã được chọn thành công!!!')}>
                     Chọn mua
                 </Button>
 

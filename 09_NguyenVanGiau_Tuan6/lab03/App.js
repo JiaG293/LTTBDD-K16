@@ -17,7 +17,6 @@ function StackScreen() {
 
 export default function App() {
   return (
-
     <NavigationContainer>
       <StackScreen />
     </NavigationContainer>

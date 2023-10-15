@@ -1,6 +1,6 @@
 import { StyleSheet, Image, View } from 'react-native';
 import { Button, Text } from 'react-native-paper';
-import productList from '../db'
+import productList from '../db';
 
 
 export default function Screen02({ navigation, route }) {
@@ -10,7 +10,7 @@ export default function Screen02({ navigation, route }) {
             name: 'Điện thoại',
             params: { color: route.params.color },
             merge: true,
-          });
+        });
     }
 
     return (
@@ -22,7 +22,8 @@ export default function Screen02({ navigation, route }) {
                         source={require(`../assets/${route.params.color}`)}
                     />
                 </View>
-                <Text variant='titleLarge'
+                <Text
+                    variant='titleLarge'
                     style={{ marginTop: 30 }}>
                     Điện Thoại Vsmart Joy 3 Hàng chính hãng
                 </Text>
