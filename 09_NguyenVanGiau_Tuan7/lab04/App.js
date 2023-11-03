@@ -1,15 +1,12 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import Screen4a from "./views/Screen4a";
-import Screen4b from "./views/Screen4b";
+import TabBar from "./navbar/TabBar";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Screen4a></Screen4a>
-      {/* <Screen4b></Screen4b> */}
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <TabBar />
+    </NavigationContainer>
   );
 }
 

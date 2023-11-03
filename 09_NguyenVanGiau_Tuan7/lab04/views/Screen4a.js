@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import dataApi from "../db/DbScreen4a";
 
+
 // Component Item
 const Item4a = ({ data, onPress, backgroundColor }) => (
   <Pressable style={[styles.itemStyle, { backgroundColor }]} onPress={onPress}>
@@ -39,7 +40,7 @@ export default function Screen4a() {
 
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === idItem ? "#d9d9d9" : "#FFFFFF";
-    console.log(idItem);
+    console.log(`Sản phẩm ${idItem} được chọn`);
     return (
       <Item4a
         data={item}
@@ -83,16 +84,6 @@ export default function Screen4a() {
           keyExtractor={(item) => item.id}
           extraData={setIdItem}
         ></FlatList>
-      </View>
-
-      {/* Bottom */}
-      <View style={styles.bottom}>
-        <Image
-          style={styles.icon}
-          source={require("../assets/drawer-tab.svg")}
-        />
-        <Image style={styles.icon} source={require("../assets/home.svg")} />
-        <Image style={styles.icon} source={require("../assets/back.svg")} />
       </View>
     </View>
   );
@@ -142,6 +133,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 100,
     alignItems: "center",
+    borderBottomColor: "hsla(0, 0%, 77%, 1)",
+    borderBottomWidth: 1,
   },
 
   //Product preview image

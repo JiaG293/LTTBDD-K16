@@ -11,7 +11,7 @@ import {
 import { Rating } from "react-native-ratings";
 import dataApi from "../db/DbScreen4b";
 
-// Component Item
+/* Component Item */
 const Item4b = ({ data, onPress, backgroundColor, typePrice }) => (
   <Pressable style={[styles.itemStyle, { backgroundColor }]} onPress={onPress}>
     <Image
@@ -28,8 +28,8 @@ const Item4b = ({ data, onPress, backgroundColor, typePrice }) => (
         onFinishRating={(rating) => console.log("Đã được đánh giá", rating)}
         startingValue={data.rating}
         style={{ paddingVertical: 5 }}
-      />
-      {/*  rating bar */}
+      />{/*  rating bar */}
+      
       <Text>({data.reviewProduct})</Text> {/* Danh gia san pham */}
     </View>
     <View style={{ flexDirection: "row" }}>
@@ -50,12 +50,11 @@ const Item4b = ({ data, onPress, backgroundColor, typePrice }) => (
 export default function Screen4b() {
   const [idItem, setIdItem] = useState(); /* Lay id san pham*/
   const [inputSearch, setInputSearch] = useState('');
-  /* Lay du lieu nhap tu O tim kiem
-   */
+  /* Lay du lieu nhap tu O tim kiem*/
   /* Thuc hien render item duoc lay tu props [data] o flatlist => [item] callback */
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === idItem ? "#d9d9d9" : "#FFFFFF";
-    console.log(idItem);
+
     return (
       <Item4b
         data={item}
@@ -114,15 +113,6 @@ export default function Screen4b() {
         ></FlatList>
       </View>
 
-      {/* Bottom */}
-      <View style={styles.bottom}>
-        <Image
-          style={styles.icon}
-          source={require("../assets/drawer-tab.svg")}
-        />
-        <Image style={styles.icon} source={require("../assets/home.svg")} />
-        <Image style={styles.icon} source={require("../assets/back.svg")} />
-      </View>
     </View>
   );
 }
