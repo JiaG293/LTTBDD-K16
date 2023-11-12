@@ -2,8 +2,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { IconButton } from 'react-native-paper'
 
-export default function ItemNote({ title, contentNote, id, priority, task, userId }) {
-
+export default function ItemNote({ title, contentNote, id, priority, task, userId, actionDelete, actionEdit, navigation, route}) {
 
     function handleBGColor(priority) {
         if (priority === 1) {
@@ -11,15 +10,6 @@ export default function ItemNote({ title, contentNote, id, priority, task, userI
         } else if (priority === 2) {
             return 'rgba(85, 150, 29, 0.8)'
         } else return 'rgba(71, 136, 240, 0.8)'
-    }
-
-    function handleDeleteItem(id) {
-        fetch(`http://localhost:3000/dbNotes?id=${id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            }
-        })
     }
 
     return (
@@ -30,7 +20,7 @@ export default function ItemNote({ title, contentNote, id, priority, task, userI
                     selectable={true}
                     numberOfLines={2}
                     style={{ fontSize: 22, fontWeight: '500', fontFamily: 'sans-serif', color: '#ffffff' }}
-                >{title}</Text>
+                >{id + ": " + title}</Text>
 
                 <Text
                     ellipsizeMode='tail'
@@ -44,13 +34,13 @@ export default function ItemNote({ title, contentNote, id, priority, task, userI
                     icon="delete"
                     iconColor='#eb4123'
                     size={20}
-                    onPress={() => handleDeleteItem(id)}
+                    onPress={actionDelete}
                 />
                 <IconButton
                     icon="square-edit-outline"
                     iconColor='#0be064'
                     size={20}
-                    onPress={() => console.log('Pressed')}
+                    onPress={actionEdit}
                 />
             </View>
         </View>

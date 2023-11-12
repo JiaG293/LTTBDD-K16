@@ -33,8 +33,8 @@ export default function StackTakeNotes() {
             />
             <Stack.Screen name="DangKy" component={DangKy} />
             <Stack.Screen name="Notes" component={Notes} />
-            <Stack.Screen name="ThemNote" component={ThemNote} />
             <Stack.Screen name="ChinhSuaNote" component={ChinhSuaNote} />
+            <Stack.Screen name="ThemNote" component={ThemNote} />
         </Stack.Navigator>
     );
 }

@@ -8,25 +8,31 @@ import { FAB } from 'react-native-paper'
 
 export default function Notes({ navigation, route }) {
   const [notes, setNotes] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+
 
   console.log(route.params?.userid);
   useEffect(() => {
     fetch(`http://localhost:3000/dbNotes?userId=${route.params?.userid}`)
       .then((res) => res.json())
       .then((data) => {
-        setNotes([...notes, ...data])
+        setNotes([...data])
         console.log(data)
+
       })
-  }, [])
+  }, [refresh])
 
   function handleDeleteItem(id) {
-    fetch(`http://localhost:3000/dbNotes?id=${id}`, {
+    fetch(`http://localhost:3000/dbNotes/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       }
     })
+      .then(() => console.log('delete successfully'))
+    setRefresh(true);
   }
+
   {/* <Text style={styles.textAlert}>There are no take notes</Text> */ }
   return (
     <View style={styles.container}>
@@ -42,6 +48,8 @@ export default function Notes({ navigation, route }) {
                 task={item.task}
                 userId={item.userId}
                 priority={item.priority}
+                actionDelete={() => handleDeleteItem(item.id)}
+                actionEdit={() => navigation.navigate('ChinhSuaNote', { editId: item.id })}
               >
               </ItemNote>
             )}
@@ -55,7 +63,7 @@ export default function Notes({ navigation, route }) {
       <FAB
         icon="plus"
         style={styles.fab}
-        onPress={() => navigation.navigate('ThemNote')}
+        onPress={() => navigation.navigate('ThemNote', { userid: route.params.userid })}
       />
     </View>
   )
@@ -64,6 +72,7 @@ export default function Notes({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FADFE3',
+    flex: 1,
   },
   top: {
     flex: 1,
