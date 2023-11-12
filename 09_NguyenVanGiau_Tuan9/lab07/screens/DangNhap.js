@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 
 export default function DangNhap({ navigation, route }) {
 
-    const [username, setUsername] = useState('jiag293');
-    const [password, setPassword] = useState('10101010');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [verify, setVerify] = useState(0);
 
     useEffect(() => {
@@ -47,14 +47,14 @@ export default function DangNhap({ navigation, route }) {
                     onChangeText={(e) => setUsername(e)}
                     value={username}
                     style={styles.textInputUsername}
-                    placeholder='Email or User Name'
+                    placeholder='Email or User Name (jiag293 hoặc jiag293@gmail.com)'
                     keyboardType='default'
                 ></TextInput>
                 <TextInput
                     onChangeText={(e) => setPassword(e)}
                     value={password}
                     style={styles.textInputPassword}
-                    placeholder='Password'
+                    placeholder='Password (1010101010)'
                     keyboardType='visible-password'
                 ></TextInput>
             </View>

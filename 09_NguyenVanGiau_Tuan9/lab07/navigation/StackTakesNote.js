@@ -16,25 +16,51 @@ const Stack = createNativeStackNavigator();
 export default function StackTakeNotes() {
     return (
         <Stack.Navigator
-            initialRouteName="DangNhap" // khoi tao route 
+            initialRouteName="ChaoMung" // khoi tao route 
             backBehavior="history"
         >
-            <Stack.Screen name="ChaoMung" component={ChaoMung} />
+            <Stack.Screen 
+             options={({ navigation, route }) => ({
+                    title: 'Chào mừng đến với take notes'
+                })}
+            name="ChaoMung" 
+            component={ChaoMung} 
+            />
             <Stack.Screen
-                // options={({ navigation, route }) => ({
-                //     headerRight: (() => (<PressableCustom
-                //         colorRiple='rgba(187, 187, 187, 1)'
-                //         onPress={() => { }}
-                //     >
-                //     </PressableCustom>))
-                // })}
+                options={({ navigation, route }) => ({
+                    title: 'Đăng nhập'
+                })}
                 name="DangNhap"
                 component={DangNhap}
             />
-            <Stack.Screen name="DangKy" component={DangKy} />
-            <Stack.Screen name="Notes" component={Notes} />
-            <Stack.Screen name="ChinhSuaNote" component={ChinhSuaNote} />
-            <Stack.Screen name="ThemNote" component={ThemNote} />
+            <Stack.Screen
+                options={({ navigation, route }) => ({
+                    title: 'Đăng Ký'
+                })}
+                name="DangKy"
+                component={DangKy}
+            />
+            <Stack.Screen
+                options={({ navigation, route }) => ({
+                    title: 'Danh sách take notes'
+                })}
+                name="Notes"
+                component={Notes}
+            />
+            <Stack.Screen
+                options={({ navigation, route }) => ({
+                    title: 'Chỉnh sửa note'
+                })}
+                name="ChinhSuaNote"
+                component={ChinhSuaNote}
+            />
+            <Stack.Screen
+                options={({ navigation, route }) => ({
+                    title: 'Thêm note mới'
+                })}
+                name="ThemNote"
+                component={ThemNote}
+            />
         </Stack.Navigator>
     );
 }

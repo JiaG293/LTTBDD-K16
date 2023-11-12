@@ -1,20 +1,30 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { SegmentedButtons, TextInput } from 'react-native-paper';
 
 export default function ChinhSuaNote({ navigation, route }) {
-  console.log("id note dang duoc edit:", route.params.editId);
+  console.log("id note dang duoc edit:", route.params?.editItem);
 
-  function handleAddNote() {
+  const noteEditInit = {
+    ...(route.params?.editItem)
+  }
+
+  console.log(noteEditInit)
+  const [note, setNote] = useState(noteEditInit);
+  const [confirm, setConfirm] = useState(0);
+
+
+
+  function handleEditNote() {
     console.log("note handle", note);
-    sendEditNote(note);
+    sendEditNote(note, route.params?.editItem.id);
     setNote(noteInit);
     setConfirm(confirm + 1);
   }
 
-  function sendEditNote(noteData) {
-    fetch(`http://localhost:3000/dbNotes`, {
-      method: "POST",
+  function sendEditNote(noteData, id) {
+    fetch(`http://localhost:3000/dbNotes/${id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -29,7 +39,7 @@ export default function ChinhSuaNote({ navigation, route }) {
   return (
     <View style={styles.container}>
       <View style={styles.top}>
-        <Text style={styles.titleScreen}>Add Note</Text>
+        <Text style={styles.titleScreen}>Edit Note</Text>
       </View>
       <View style={styles.middle}>
         <TextInput
@@ -112,11 +122,9 @@ export default function ChinhSuaNote({ navigation, route }) {
             backgroundColor: pressed ? '#c4bbf0' : '#6B4EFF',
           }])}
 
-          onPress={() => {
-            handleAddNote()
-          }}
+          onPress={() => handleEditNote()}
         >
-          <Text style={styles.textbuttonAddNote}>Add Note</Text>
+          <Text style={styles.textbuttonAddNote}>Update Note</Text>
         </Pressable>
       </View>
 

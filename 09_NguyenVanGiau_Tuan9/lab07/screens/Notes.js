@@ -9,8 +9,15 @@ import { FAB } from 'react-native-paper'
 export default function Notes({ navigation, route }) {
   const [notes, setNotes] = useState([]);
   const [refresh, setRefresh] = useState(false);
-
-
+  const noteInit = {
+    createdAt: Date.now(),
+    title: '',
+    contentNote: '',
+    userId: route.params?.userid,
+    priority: 0,
+    task: '',
+    id: ''
+  }
   console.log(route.params?.userid);
   useEffect(() => {
     fetch(`http://localhost:3000/dbNotes?userId=${route.params?.userid}`)
@@ -33,6 +40,8 @@ export default function Notes({ navigation, route }) {
     setRefresh(true);
   }
 
+
+
   {/* <Text style={styles.textAlert}>There are no take notes</Text> */ }
   return (
     <View style={styles.container}>
@@ -49,7 +58,7 @@ export default function Notes({ navigation, route }) {
                 userId={item.userId}
                 priority={item.priority}
                 actionDelete={() => handleDeleteItem(item.id)}
-                actionEdit={() => navigation.navigate('ChinhSuaNote', { editId: item.id })}
+                actionEdit={() => navigation.navigate('ChinhSuaNote', { editItem: item })}
               >
               </ItemNote>
             )}
