@@ -51,21 +51,12 @@
   ],
   "dbNotes": [
     {
-      "createdAt": 1699708462,
-      "title": "title",
-      "contentNote": "National",
-      "userId": "ae8eb83b-4f5b-482d-91ff-266b85bf4c51",
-      "priority": 2,
-      "task": "Short Term",
-      "id": "2"
-    },
-    {
       "createdAt": 1699708342,
-      "title": "title",
+      "title": "thuc hanh tuan9",
       "contentNote": "Investor",
       "userId": "ae8eb83b-4f5b-482d-91ff-266b85bf4c51",
-      "priority": 2,
-      "task": "Short Term",
+      "priority": 3,
+      "task": "Long Term",
       "id": "4"
     },
     {
@@ -112,6 +103,15 @@
       "priority": 2,
       "task": "Short Term",
       "id": "99"
+    },
+    {
+      "createdAt": 1700376179308,
+      "title": "thuc hanh tuan 9",
+      "contentNote": "thuc hanh tuan 9",
+      "userId": "ae8eb83b-4f5b-482d-91ff-266b85bf4c51",
+      "priority": 2,
+      "task": "Short Term",
+      "id": 691
     }
   ]
 }
