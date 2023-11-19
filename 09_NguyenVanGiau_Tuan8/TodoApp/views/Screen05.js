@@ -25,7 +25,7 @@ export default function Screen05({ navigation, route }) {
   const [todos, setTodos] = useState([]);
   const [checked, setChecked] = useState(true);
 
-  const api = 'http://localhost:8088/v1/todos';
+  const api = 'http://localhost:3000/todos';
   const handleAddToDo = () => {
     todo?.job ? setTodos((prev) => [...prev, todo]) : console.log("Khong co du lieu de them vao");
     setTodo(template);

@@ -1,1 +1,0 @@
-pwd mongo: mongo123

@@ -9,7 +9,7 @@ export default function ({ navigation, route }) {
     const [name, setName] = useState('Dianne Crooks');
     const [dataApi, setDataApi] = useState([]);
 
-    const api = 'http://localhost:8088/v1/todos';
+    const api = 'http://localhost:3000/todos';
     const handleSubmit = () => {
         navigation.navigate({
             name: "Nhập todo",
